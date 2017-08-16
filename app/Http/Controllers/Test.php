@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\staff;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,13 @@ class Test extends Controller
         $admin = User::role('admin')->get();
         print_r('<pre>');
         print_r($admin->first()->user_id);
+        print_r('</pre>');
+        print_r('<br><br>');
+
+        $asd = User::find($id);
+        $staff = staff::find($id);
+        print_r('<pre>');
+        print_r($asd->user_name);
         print_r('</pre>');
     }
 

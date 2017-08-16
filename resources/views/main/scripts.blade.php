@@ -7,3 +7,4 @@
 <script>    $(document).foundation();  </script>
 <!-- app.js -->
 {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+

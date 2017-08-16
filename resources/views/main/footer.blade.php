@@ -1,5 +1,6 @@
-<div style="clear: both;"></div>
+
 <center>
+{{--footer--}}
 <div id="footer">
     <div id="footer_blocks">
         <div class="footer_block block1"></div>
@@ -16,5 +17,6 @@
     <div style="border:1px solid #777;margin: 5px 0;border-width: 1px 0 0;"></div>
     <div id="copyright"> All Rights Reserved to Information Systems Center - Faculty of Engineering - Ain Shams
         University <? echo date('Y'); ?>  </div>
-</div><!-- End of footer -->
+</div>
+{{--end footer--}}
 </center>

@@ -22,3 +22,7 @@ Route::get('/auth', 'Test@authenticate')->middleware('myauth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware'=>['myauth']],function (){
+    Route::get('/index', 'Home@index')->name('home');
+});
