@@ -11,18 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/test', 'authse@test');
-Route::get('/index', 'Home@index');
 Route::get('/new', 'Test@asd')->middleware('myauth');
 Route::get('/auth', 'Test@authenticate')->middleware('myauth');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//logout
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::group(['middleware'=>['myauth']],function (){
-    Route::get('/index', 'Home@index')->name('home');
+    Route::get('/', 'Home@index')->name('home');
 });

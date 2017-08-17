@@ -22,6 +22,11 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    /**
+     * override the login function
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
     public function login(Request $request)
     {
         if (!Auth::attempt($this->credentials($request))) {
@@ -30,6 +35,11 @@ class LoginController extends Controller
         return $this->sendLoginResponse($request);
     }
 
+    /**
+     * override the credentials function
+     * @param Request $request
+     * @return array
+     */
     protected function credentials(Request $request)
     {
         return $request->only($this->username());
@@ -37,6 +47,19 @@ class LoginController extends Controller
     public function username()
     {
         return 'user_id';
+    }
+
+    /**
+     * override logout to delete ci cookie
+     * @param Request $request
+     * @return $this
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        $cookie = cookie('ci_session', '');
+        return redirect('/')->withCookies(array($cookie));
     }
 
     /**
